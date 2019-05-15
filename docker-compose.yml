@@ -1,0 +1,9 @@
+version: '2'
+services: 
+  gin-web:
+    build: .
+    image: renegmedal/inven-wms:1.0.1
+    environment: 
+    - PORT=8484
+    ports: 
+    - "8484:8484"
