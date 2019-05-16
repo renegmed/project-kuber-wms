@@ -8,7 +8,7 @@ docker:
 
 .PHONY: run  
 run:
-	docker run --name inven-wms -d -p 8484:8484 inven-wms
+	docker run --name inven-wms --net host -d -p 8484:8484 inven-wms
 
 .PHONY: tag
 tag:

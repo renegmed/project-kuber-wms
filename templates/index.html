@@ -1,26 +1,21 @@
-{{ define "index.html" }}
-
 <html>
  
-<head>
-
-    <title>{{ .title }}</title> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script type="text/JavaScript"> 
-        $(document).ready(function(){
-
-            $.getJSON( "/hello", function( data ) { 
-                $("#message").html(data.message) 
-             }); 
-         });
-
-    </script> 
-</head> 
-<body> 
-    <div id="message"></div> 
-</body> 
-
-</html>
-
-{{ end }}
+    <head>
+    
+        <title>{{ .title }}</title> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     
+    </head> 
+    <body> 
+        <h1>Warehouse Management System</h1>
+        <section>   
+            {{range .products}}
+                <div>{{ .Name}}</div>
+                <div>{{ .Sku}}</div>
+                <div>{{ .Quantity}}</div>
+            {{end}}
+        </section>
+    </body> 
+    
+    </html>
+    
