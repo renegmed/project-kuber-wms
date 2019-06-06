@@ -8,7 +8,7 @@ docker:
 
 .PHONY: run  
 run:
-	docker run --name inven-wms --net host -d -p 8484:8484 inven-wms
+	docker run --name inven-wms --net host -d -p 8484:8484 -e STORE_HOST='127.0.0.1' -e STORE_PORT='8080' inven-wms
 
 .PHONY: tag
 tag:

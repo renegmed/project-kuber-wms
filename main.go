@@ -20,6 +20,9 @@ type Product struct {
 
 func main() {
 
+	var storeHost = os.Getenv("STORE_HOST")
+	var storePort = os.Getenv("STORE_PORT")
+
 	engine := gin.Default()
 
 	engine.GET("/ping", func(c *gin.Context) {
@@ -36,8 +39,11 @@ func main() {
 
 	engine.GET("/products", func(c *gin.Context) {
 
-		prods, err := readProducts("http://127.0.0.1:8080/api/products")
+		productsAPI := fmt.Sprintf("http://%s:%s/api/products", storeHost, storePort)
+		fmt.Printf("Products API: %s", productsAPI)
 
+		//prods, err := readProducts("http://127.0.0.1:8080/api/products")
+		prods, err := readProducts(productsAPI)
 		if err != nil {
 			c.String(http.StatusBadRequest, "URL data error")
 			return
